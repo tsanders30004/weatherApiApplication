@@ -87,8 +87,26 @@
                // var atlantaWeather = new google.maps.Marker({position: {lat: weatherData.list[0].coord.lat, lng: weatherData.list[0].coord.lon}, map: myMap, animation: google.maps.Animation.DROP, title: weatherData.list[0].name});
 
                /* this code shows markers for all cities on the array */
-               var listOfMarkers = weatherData.list.map(function(oneCity){return new google.maps.Marker({position: {lat: oneCity.coord.lat, lng: oneCity.coord.lon}, map: myMap, animation: google.maps.Animation.DROP, title: oneCity.name})});
+               var listOfMarkers = weatherData.list.map(function(oneCity){
 
+                    /* format of icon URL */
+                    /* http://openweathermap.org/img/w/{{result.weaher[0].icon}}.png */
+
+                    return new google.maps.Marker({
+                         position: {lat: oneCity.coord.lat, lng: oneCity.coord.lon},
+                         map: myMap,
+                         animation: google.maps.Animation.DROP,
+                         icon: 'http://openweathermap.org/img/w/' + oneCity.weather[0].icon + '.png',
+                         title: oneCity.name})
+               });
+
+               console.log('the weather icon code is at weatherData.list[i].weather[0].icon.  you have to append png')
+               console.log('a sample url for a weather icon is:  http://openweathermap.org/img/w/01d.png')
+
+
+
+
+               debugger;
           }
      });
 
