@@ -15,7 +15,10 @@
           position: absolute;
           left: 70%;
           width: 30%;
+          height: 100%;
+          overflow: auto;
      }
+     
      #map {
           position: absolute;
           height: 100%;
@@ -24,6 +27,12 @@
      .sidebar-heading {
           text-align: center;
      }
+     table {
+          margin-left: 2em;
+     }
+     td {
+          padding-right: 2em;
+     }
      </style>
 
      <script src="angular.js"></script>
@@ -31,14 +40,23 @@
      <script src="jquery.js"></script>
      <script src="weather.js"></script>
 
-     </head>
-     <body ng-app="myApp" ng-controller="myController">
-          <div id="map">
-               <!-- populated by Angular -->
-          </div>
-          <div id="sidebar">
-               <p class="sidebar-heading">Weather in the USA</p>
-          </div>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+     <div id="map">
+          <!-- populated by Angular -->
+     </div>
+     <div id="sidebar">
+          <h2 style="text-align: center;">Weather Across the USA</h2>
+          <table>
+               <tr ng-repeat="weatherForOneCity in weatherInfo">
+                    <td>{{weatherForOneCity.name}}</td>
+                    <td>{{weatherForOneCity.main.temp | number:0}}°F</td>
+                    <td>
+                         <img src="{{'http://openweathermap.org/img/w/' + weatherForOneCity.weather[0].icon + '.png'}}">
+                    </td>
+               </tr>
+          </table>
+     </div>
 
-     </body>
-     </html>
+</body>
+</html>
