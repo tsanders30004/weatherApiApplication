@@ -34,6 +34,7 @@ myApp.controller('myController', function($scope, $http){
      /* do an ajax call to get the weather data */
      $http.get('http://api.openweathermap.org/data/2.5/group?id=' + cityIds.join() + '&units=imperial&APPID=eac2948bfca65b78a8c5564ecf91d00e')
      .success(function(weatherData){
+          console.log(JSON.stringify(weatherData));
           var listOfMarkers = weatherData.list.map(function(oneCity){
                return new google.maps.Marker({
                     position: {lat: oneCity.coord.lat, lng: oneCity.coord.lon},
@@ -54,6 +55,6 @@ myApp.controller('myController', function($scope, $http){
                     return new google.maps.InfoWindow({
                          content:  '<h4>' + oneCity.name + '</h4>' + '<p>' + oneCity.main.temp + 'degrees F</p>' + '<p>' + oneCity.main.temp_max + 'degrees F</p>' + '<p>' + oneCity.main.temp_min + 'degrees F</p>' + '<p>' + oneCity.main.pressure + 'degrees F</p>' + '<p>' + oneCity.main.humidity + 'degrees F</p>' + '<p>' + oneCity.wind.speed + 'degrees F</p>'
                     });
-               }); 
+               });
           });  /* success */
      });  /* myApp */
