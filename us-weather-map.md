@@ -87,7 +87,7 @@ For more information: http://openweathermap.org/weather-conditions
 
 1. Create a div element with an id of "map".
 2. Initialize a new Google map on that element. You will need to style the div with a height and width in order to see the map show up.
-3. Center the map somewhere in Kansas: 6.
+3. Center the map somewhere in Kansas: .
 4. Tweak the zoom level so that you see the entire United States.
 5. Using $http, make an API request to get the weather conditions for the list of cities in cityIds. Use the "Call for several city IDs" API: http://openweathermap.org/current. Print the received data to the console and inspect the data you got.
 6. For each result you got, create a marker in the coordinate for that city and plot it on the map. See if you can do this without writing a loop.

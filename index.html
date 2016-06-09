@@ -4,123 +4,41 @@
      <meta charset="utf-8">
      <title>My Weather Application</title>
      <style>
-
-     html, body {
+     body {
           height: 100%;
           margin: 0;
           padding: 0;
           box-sizing: border-box;
           font-family: Verdana;
      }
+     #sidebar {
+          position: absolute;
+          left: 70%;
+          width: 30%;
+     }
      #map {
+          position: absolute;
           height: 100%;
+          width: 70%;
+     }
+     .sidebar-heading {
+          text-align: center;
      }
      </style>
 
      <script src="angular.js"></script>
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5G4Ayi5do4-xDcxY-C_kDjqllRidNZPw&callback=initMap" async defer></script>
      <script src="jquery.js"></script>
-     <!-- <script src="../jquery.js"></script> -->
-     <!-- <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script> -->
+     <script src="weather.js"></script>
 
-     <script>
+     </head>
+     <body ng-app="myApp" ng-controller="myController">
+          <div id="map">
+               <!-- populated by Angular -->
+          </div>
+          <div id="sidebar">
+               <p class="sidebar-heading">Weather in the USA</p>
+          </div>
 
-     var cityIds = [
-          4180439,
-          5128638,
-          4560349,
-          4726206,
-          4671654,
-          5809844,
-          5368361,
-          5391811,
-          5308655,
-          4684888,
-          4887398,
-          5391959,
-          5392171,
-          4164138,
-          4273837,
-          5746545,
-          4699066,
-          5419384,
-          4990729
-     ];
-
-     var myApp = angular.module('myApp', []);
-     myApp.controller('myController', function($scope, $http){
-          $scope.myVar = 'this is my weather application';
-          $scope.myBoolean = true;
-          $scope.myFunction = function(){
-               /* function logic here */
-          };
-          /* etc */
-     });
-
-     var myMap;
-     function initMap() {
-          myMap = new google.maps.Map(document.getElementById('map'), {
-               center: {lat: 39.099727, lng: -94.578567},
-               zoom: 5
-          });
-     }
-
-     /* API for list of cities */
-     /* api.openweathermap.org/data/2.5/group?id=4180439,5128638,4560349,4726206,4671654,5809844,5368361,5391811,5308655,4684888,4887398,5391959,5392171,4164138,4273837,5746545,4699066,5419384,4990729&&units=matric&APPID=eac2948bfca65b78a8c5564ecf91d00e */
-
-     /* make AJAX call to get the weather data for several cities */
-     $.ajax({
-          url: 'http://api.openweathermap.org/data/2.5/group?id=' + cityIds.join() + '&units=metric&APPID=eac2948bfca65b78a8c5564ecf91d00e',
-          method:   'GET',
-          success:  function(weatherData){
-               console.log('Data returned from Ajax: ', weatherData);
-
-               /* create a marker on the map for each city, without a loop if possible */
-               /* sample from the google API project */
-               // var myHomeLocation = new google.maps.Marker({position: {lat: 34.083838, lng: -84.281489}, map: myMap, animation: google.maps.Animation.DROP, title: 'Home'});
-
-               /* for now, just show a marker for the first city. */
-
-               // var atlantaCoordinates = {lat: weatherData.list[0].coord.lat, lng: weatherData.list[0].coord.lon};
-               // console.log(atlantaCoordinates);
-               /* this code shows the marker for just one city. */
-               // var atlantaWeather = new google.maps.Marker({position: {lat: weatherData.list[0].coord.lat, lng: weatherData.list[0].coord.lon}, map: myMap, animation: google.maps.Animation.DROP, title: weatherData.list[0].name});
-
-               /* this code shows markers for all cities on the array */
-               var listOfMarkers = weatherData.list.map(function(oneCity){
-
-                    /* format of icon URL */
-                    /* http://openweathermap.org/img/w/{{result.weaher[0].icon}}.png */
-
-                    return new google.maps.Marker({
-                         position: {lat: oneCity.coord.lat, lng: oneCity.coord.lon},
-                         map: myMap,
-                         animation: google.maps.Animation.DROP,
-                         icon: 'http://openweathermap.org/img/w/' + oneCity.weather[0].icon + '.png',
-                         title: oneCity.name})
-               });
-
-               console.log('the weather icon code is at weatherData.list[i].weather[0].icon.  you have to append png')
-               console.log('a sample url for a weather icon is:  http://openweathermap.org/img/w/01d.png')
-
-
-
-
-               debugger;
-          }
-     });
-
-
-
-
-
-     </script>
-
-</head>
-<body ng-app="myApp">
-     <div id="map" ng-controller="myController">
-
-     </div>
-
-</body>
-</html>
+     </body>
+     </html>
