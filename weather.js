@@ -56,5 +56,6 @@ myApp.controller('myController', function($scope, $http){
                          content:  '<h4>' + oneCity.name + '</h4>' + '<p>' + oneCity.main.temp + 'degrees F</p>' + '<p>' + oneCity.main.temp_max + 'degrees F</p>' + '<p>' + oneCity.main.temp_min + 'degrees F</p>' + '<p>' + oneCity.main.pressure + 'degrees F</p>' + '<p>' + oneCity.main.humidity + 'degrees F</p>' + '<p>' + oneCity.wind.speed + 'degrees F</p>'
                     });
                });
+               debugger;
           });  /* success */
      });  /* myApp */
