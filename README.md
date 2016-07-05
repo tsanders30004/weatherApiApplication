@@ -12,4 +12,4 @@ Tim Sanders
 *    JavaScript
 *    AngularJS
 
-##Project URL (http://weathercaffeine.com)
+##Project URL (http://weathercaffeine.surge.sh)
