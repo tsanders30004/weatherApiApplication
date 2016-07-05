@@ -23,7 +23,7 @@ var cityIds = [
 var myMap;
 function initMap() {
      myMap = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 39.099727, lng: -94.578567},
+          center: {lat: 33.7490, lng: -84.3880},
           zoom: 5
      });
 }
